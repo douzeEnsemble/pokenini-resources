@@ -9,3 +9,12 @@ help: ## Outputs this help screen
 ## —— Copy from icons 📋 ————————————————————————————————————————————————————————————————
 copy: ## Copy from icons
 	cp -R ../pokenini-icon/images/* .
+
+## —— Host images 🌐 ————————————————————————————————————————————————————————————————
+host: ## Hosting the images
+	docker run -dit --name pokenini-resources -p 8082:80 \
+		-v "$(PWD)":/usr/local/apache2/htdocs/ httpd:2.4
+
+unhost: ## Stop hosting
+	docker stop pokenini-resources
+	docker rm -vf pokenini-resources
