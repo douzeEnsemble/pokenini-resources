@@ -12,7 +12,7 @@ copy: ## Copy from icons
 
 ## —— Host images 🌐 ————————————————————————————————————————————————————————————————
 host: ## Hosting the images
-	docker run -dit --name pokenini-resources -p 8082:80 \
+	docker run -dit --name pokenini-resources -p 8083:80 \
 		-v "$(PWD)":/usr/local/apache2/htdocs/ httpd:2.4
 
 unhost: ## Stop hosting

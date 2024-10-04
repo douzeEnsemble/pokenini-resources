@@ -8,3 +8,14 @@ Sources and scripts are into a private repository.
 ```
 make copy
 ```
+
+## Host image
+
+```
+make host
+```
+
+and to stop 
+```
+make unhost
+```
