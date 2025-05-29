@@ -18,3 +18,8 @@ host: ## Hosting the images
 unhost: ## Stop hosting
 	docker stop pokenini-resources
 	docker rm -vf pokenini-resources
+
+## —— Image 🐳 ———————————————————————————————————————————————————————————————
+img-build: ## Build Docker image
+	docker build -f ./.docker/web/Dockerfile -t ghcr.io/douzeensemble/pokenini-resources:latest .
+	docker push ghcr.io/douzeensemble/pokenini-resources:latest
