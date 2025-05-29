@@ -35,7 +35,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          flavor: |
+          flavor: | 
             latest=auto
             prefix=
             suffix=${{ env.IMAGE_TAG_SUFFIXE }},onlatest=true
@@ -61,7 +61,6 @@ jobs:
         with:
           context: .
           file: ./.docker/web/Dockerfile
-          target: php_prod
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
