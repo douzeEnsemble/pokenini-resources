@@ -60,8 +60,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./.docker/php/Dockerfile
-          target: php_prod
+          file: ./.docker/web/Dockerfile
           push: true
           platforms: linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
@@ -117,8 +116,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./.docker/php/Dockerfile
-          target: php_prod
+          file: ./.docker/web/Dockerfile
           push: true
           platforms: linux/amd64
           tags: ${{ steps.meta.outputs.tags }}
