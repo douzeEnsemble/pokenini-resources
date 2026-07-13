@@ -1,0 +1,9 @@
+name: Pokénini Resources
+
+services:
+  web:
+    image: httpd:2.4
+    volumes:
+      - .:/usr/local/apache2/htdocs/
+    ports:
+      - '127.0.0.1:8083:80'

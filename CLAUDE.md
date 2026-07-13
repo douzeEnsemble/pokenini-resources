@@ -31,10 +31,10 @@ Both `.png` and `.webp` exist for every image.
 ## Key commands
 
 ```bash
-make copy        # Sync images from ../pokenini-icon/images/ into this repo
-make host        # Serve locally at http://localhost:8083 via Docker/Apache
-make unhost      # Stop the local server
-make img-build   # Build and push Docker image to ghcr.io (requires auth)
+make copy      # Sync images from ../pokenini-icon/images/ into this repo
+make host      # Serve locally at http://127.0.0.1:8083 via docker compose (joins the pokenini-local network, alias icons.pokenini.local)
+make unhost    # Stop the local server
+make img-build # Build and push Docker image to ghcr.io (requires auth)
 ```
 
 ## Deployment
