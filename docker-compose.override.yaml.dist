@@ -8,4 +8,4 @@ services:
       default: {}
       pokenini-local:
         aliases:
-          - icons.pokenini.local
+          - resources.pokenini.local

@@ -19,9 +19,17 @@ copy: ## Copy from icons
 host: ## Hosting the images
 	$(DOCKER_COMP) up --wait
 
+.PHONY: start
+start: ## Hosting the images
+start: host
+
 .PHONY: unhost
 unhost: ## Stop hosting
 	$(DOCKER_COMP) down --remove-orphans
+
+.PHONY: stop
+stop: ## Stop hosting
+stop: unhost
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 .PHONY: img-build
