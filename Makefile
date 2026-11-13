@@ -36,3 +36,8 @@ stop: unhost
 img-build: ## Build Docker image
 	docker build -f ./.docker/web/Dockerfile -t ghcr.io/douzeensemble/pokenini-resources:latest .
 	docker push ghcr.io/douzeensemble/pokenini-resources:latest
+
+## —— Git hooks ——————————————————————————————————————————————————————————————
+hooks: ## Enable the Conventional Commits git hook
+	git config core.hooksPath .githooks
+.PHONY: hooks

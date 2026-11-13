@@ -42,3 +42,9 @@ make img-build # Build and push Docker image to ghcr.io (requires auth)
 A GitHub Actions workflow (`.github/workflows/push.yml`) triggers on GitHub releases. It builds and pushes a multi-arch Docker image (`linux/amd64` + `linux/arm64`) to `ghcr.io/douzeensemble/pokenini-resources`, tagging stable releases as `*-release` and prereleases as `*-prerelease`. The version string is injected into `resources/metadata/version` at build time.
 
 The Docker image is a plain `httpd:2.4-alpine` container with the entire repo copied into the Apache document root.
+
+## Commits and releases
+
+- Commit messages and pull request titles follow [Conventional Commits](https://www.conventionalcommits.org): `type(scope): subject`, with `type` in `feat`, `fix`, `perf`, `revert`, `docs`, `style`, `refactor`, `test`, `build`, `ci`, `chore`. A breaking change is `type!:` or a `BREAKING CHANGE:` footer. Rules in `.commitlintrc.json`, checked by the `Conventional commits` workflow and, locally, by the hook enabled with `make hooks`.
+- Pull requests are squash-merged: the PR title is the commit on `main`, so it must be conventional.
+- On every push on `main`, `release.yml` runs semantic-release: `feat` → minor, `fix` / `perf` / `build(deps)` → patch, breaking → major, anything else → no release. A release is created as a GitHub **prerelease** (staging); `make promote` in pi-projects turns it into a release (prod). It needs the `RELEASE_TOKEN` secret (fine-grained PAT, Contents: read and write on this repository).
