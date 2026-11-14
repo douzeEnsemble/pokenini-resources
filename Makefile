@@ -11,8 +11,10 @@ help: ## Outputs this help screen
 
 ## —— Copy from icons 📋 ————————————————————————————————————————————————————————————————
 .PHONY: copy
-copy: ## Copy from icons
-	cp -R ../pokenini-icon/images/* .
+copy: ## Mirror images from icons (deletions included)
+	rsync -a --delete ../pokenini-icon/images/dex/ dex/
+	rsync -a --delete ../pokenini-icon/images/pokemon/ pokemon/
+	cp ../pokenini-icon/images/index.html index.html
 
 ## —— Host images 🌐 ————————————————————————————————————————————————————————————————
 .PHONY: host
