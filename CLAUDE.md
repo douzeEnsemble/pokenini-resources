@@ -56,6 +56,5 @@ Ce dépôt est un miroir statique d'images servi par Apache : il n'a ni code app
 - **DOC-04** : pas de `doc/` ; ce fichier suffit.
 - **ARCH-01**, **ARCH-02** : pas de modules JavaScript.
 - **COV-***, **MUT-***, **CI-13** : rien à tester ni à auditer côté npm.
-- **VER-02** : `.releaserc.json` diffère du modèle par la règle `chore(images)` → patch, pour qu'une mise à jour d'images publie une version, et par `--prerelease` (déploiement en deux temps, voir `release.yml`).
 - **VER-09** : pas de version applicative embarquée.
 - **UPD-01**, **UPD-04** : pas de dépendances Node ; Dependabot couvre `github-actions` et `docker`.
