@@ -48,3 +48,14 @@ The Docker image is a plain `httpd:2.4-alpine` container with the entire repo co
 - Commit messages and pull request titles follow [Conventional Commits](https://www.conventionalcommits.org): `type(scope): subject`, with `type` in `feat`, `fix`, `perf`, `revert`, `docs`, `style`, `refactor`, `test`, `build`, `ci`, `chore`. A breaking change is `type!:` or a `BREAKING CHANGE:` footer. Rules in `.commitlintrc.json`, checked by the `Conventional commits` workflow and, locally, by the hook enabled with `make hooks`.
 - Pull requests are rebase-merged: every commit of the PR lands on `main` as is, so each commit message must be conventional (checked by the `commits` job).
 - On every push on `main`, `release.yml` runs semantic-release: `feat` → minor, `fix` / `perf` / `build(deps)` → patch, breaking → major, anything else → no release. A release is created as a GitHub **prerelease** (staging); `make promote` in pi-projects turns it into a release (prod). It needs the `RELEASE_TOKEN` secret (fine-grained PAT, Contents: read and write on this repository).
+
+## Écarts au guide
+
+Ce dépôt est un miroir statique d'images servi par Apache : il n'a ni code applicatif, ni `package.json`, ni `composer.json`. Les règles suivantes du guide de bonnes pratiques n'ont pas d'objet ici :
+
+- **DOC-04** : pas de `doc/` ; ce fichier suffit.
+- **ARCH-01**, **ARCH-02** : pas de modules JavaScript.
+- **COV-***, **MUT-***, **CI-13** : rien à tester ni à auditer côté npm.
+- **VER-02** : `.releaserc.json` diffère du modèle par la règle `chore(images)` → patch, pour qu'une mise à jour d'images publie une version, et par `--prerelease` (déploiement en deux temps, voir `release.yml`).
+- **VER-09** : pas de version applicative embarquée.
+- **UPD-01**, **UPD-04** : pas de dépendances Node ; Dependabot couvre `github-actions` et `docker`.
